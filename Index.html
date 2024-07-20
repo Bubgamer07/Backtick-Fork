@@ -284,6 +284,13 @@
   </div>
 
   <script>
+    var mouse = {x: "0", y: "0"}
+    function updateMouse(event) {
+        let x = event.clientX;
+        let y = event.clientY;
+        mouse.x = x - document.getElementById("stage").clientX;
+        mouse.y = y - document.getElementById("stage").clientY;
+    }
     const blocksByCategory = {
       Control: [
         { text: "when green flag clicked", color: "#FFAB19", inputs: [], opcode: "event_whenflagclicked", undeletable: true },
@@ -1147,12 +1154,12 @@
 
       function getMouseX() {
         // This is a placeholder. In a real implementation, you'd track the mouse position.
-        return Math.floor(Math.random() * stage.clientWidth);
+        return mouse.x;
       }
 
       function getMouseY() {
         // This is a placeholder. In a real implementation, you'd track the mouse position.
-        return Math.floor(Math.random() * stage.clientHeight);
+        return mouse.y;
       }
 
       function isTouchingObject(object) {
